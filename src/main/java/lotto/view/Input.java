@@ -1,6 +1,8 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Input {
 
@@ -21,5 +23,12 @@ public class Input {
         }
 
         return purchasePrice;
+    }
+
+
+    public List<Integer> inputWinNumbers(){
+        List<Integer> winNumbers = new ArrayList<>();
+
+        return winNumbers;
     }
 }
