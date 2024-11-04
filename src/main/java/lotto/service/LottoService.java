@@ -19,6 +19,12 @@ public class LottoService {
         return lottoList;
     }
 
+    /*public List<Lotto> winners(List<Lotto> buyLottoList, Set<Integer> winNumbers) {
+        for (Lotto lotto : buyLottoList) {
+
+        }
+    }*/
+
 
     private Lotto makeNewLotto() {
         List<Integer> lottoNumbers = Randoms.pickUniqueNumbersInRange(1, 45, 6);

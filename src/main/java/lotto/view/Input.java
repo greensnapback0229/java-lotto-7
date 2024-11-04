@@ -11,6 +11,8 @@ public class Input {
 
     public Integer inputPurchasePrice() {
 
+        System.out.println("구입금액을 입력해 주세요.");
+
         String priceInput = Console.readLine();
         Integer purchasePrice;
         try {
@@ -28,6 +30,9 @@ public class Input {
 
 
     public Set<Integer> inputWinNumbers() {
+
+        System.out.println("당첨 번호를 입력해 주세요.");
+
         Set<Integer> winNumbers = new HashSet<>();
         String input = Console.readLine();
 
@@ -37,6 +42,24 @@ public class Input {
             System.out.println(e.getMessage());
             inputWinNumbers();
         }
+
+        return winNumbers;
+    }
+
+    public Set<Integer> inputBonus(Set<Integer> winNumbers) {
+
+        System.out.println("보너스 번호를 입력해 주세요.");
+        Integer bonus;
+        String input = Console.readLine();
+
+        try {
+            bonus = Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            inputBonus(winNumbers);
+            throw new IllegalArgumentException("[ERROR] 숫자를 입력");
+        }
+
+        winNumbers.add(bonus);
 
         return winNumbers;
     }
