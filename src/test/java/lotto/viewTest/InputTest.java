@@ -1,6 +1,7 @@
 package lotto.viewTest;
 
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.io.ByteArrayInputStream;
 import lotto.view.Input;
@@ -37,7 +38,7 @@ public class InputTest {
         input.inputPurchasePrice();
 
         //then
-        assertDoesNotThrow(() -> systemInputString(wrongPrice.toString()));
+        assertThrows(IllegalArgumentException.class, () -> systemInputString(wrongPrice.toString()));
     }
 
     public static void systemInputString(String s){
