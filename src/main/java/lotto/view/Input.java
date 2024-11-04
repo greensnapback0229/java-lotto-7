@@ -1,24 +1,25 @@
 package lotto.view;
 
 import camp.nextstep.edu.missionutils.Console;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Input {
 
 
-    public Integer inputPurchasePrice(){
+    private final InputValidation inputValidation = new InputValidation();
+
+    public Integer inputPurchasePrice() {
 
         String priceInput = Console.readLine();
         Integer purchasePrice;
-        try{
+        try {
             purchasePrice = Integer.parseInt(priceInput);
-        }
-        catch(NumberFormatException e){
+        } catch (NumberFormatException e) {
             throw new IllegalArgumentException("[ERROR] 정수형만 입력해주세요");
         }
 
-        if(purchasePrice % 1000 != 0 || purchasePrice <= 0){
+        if (purchasePrice % 1000 != 0 || purchasePrice <= 0) {
             throw new IllegalArgumentException("[ERROR] 1000원 단위로만 구매 가능합니다");
         }
 
@@ -26,8 +27,16 @@ public class Input {
     }
 
 
-    public List<Integer> inputWinNumbers(){
-        List<Integer> winNumbers = new ArrayList<>();
+    public Set<Integer> inputWinNumbers() {
+        Set<Integer> winNumbers = new HashSet<>();
+        String input = Console.readLine();
+
+        try {
+            winNumbers = inputValidation.validateWinNumbers(input);
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());
+            inputWinNumbers();
+        }
 
         return winNumbers;
     }

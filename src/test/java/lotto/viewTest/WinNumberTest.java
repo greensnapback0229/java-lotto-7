@@ -4,7 +4,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.List;
+import java.util.Set;
 import lotto.TestUtil;
 import lotto.view.Input;
 import org.junit.jupiter.api.Test;
@@ -18,13 +18,13 @@ public class WinNumberTest {
 
         //given
         String normalInput = "1,2,3,4,5,6";
-        List<Integer> normalList = List.of(1, 2, 3, 4, 5, 6);
+        Set<Integer> normalList = Set.of(1, 2, 3, 4, 5, 6);
 
         //when
         TestUtil.systemInputString(normalInput);
 
         //then
-        List<Integer> resultList = assertDoesNotThrow(() -> this.input.inputWinNumbers());
+        Set<Integer> resultList = assertDoesNotThrow(() -> this.input.inputWinNumbers());
         assertThat(normalList).isEqualTo(resultList);
     }
 
