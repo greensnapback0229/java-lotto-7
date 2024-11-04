@@ -7,7 +7,19 @@ public class Input {
 
     public Integer inputPurchasePrice(){
 
-        Console.readLine();
-        return 0;
+        String priceInput = Console.readLine();
+        Integer purchasePrice;
+        try{
+            purchasePrice = Integer.parseInt(priceInput);
+        }
+        catch(NumberFormatException e){
+            throw new IllegalArgumentException("[ERROR] 정수형만 입력해주세요");
+        }
+
+        if(purchasePrice % 1000 != 0 || purchasePrice <= 0){
+            throw new IllegalArgumentException("[ERROR] 1000원 단위로만 구매 가능합니다");
+        }
+
+        return purchasePrice;
     }
 }

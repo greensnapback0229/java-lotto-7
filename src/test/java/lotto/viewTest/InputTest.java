@@ -22,11 +22,11 @@ public class InputTest {
         Integer normalPrice = 13000;
 
         //when
-        input.inputPurchasePrice();
+        systemInputString(normalPrice.toString());
 
 
         //then
-        assertDoesNotThrow(() -> systemInputString(normalPrice.toString()));
+        assertDoesNotThrow(() -> input.inputPurchasePrice());
     }
 
     @Test
@@ -37,10 +37,11 @@ public class InputTest {
         Integer wrongPrice = 13100;
 
         //when
-        input.inputPurchasePrice();
+        systemInputString(wrongPrice.toString());
+
 
         //then
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> systemInputString(wrongPrice.toString()));
+        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> input.inputPurchasePrice());
         assertThat(exception.getMessage()).isEqualTo("[ERROR] 1000원 단위로만 구매 가능합니다");
     }
     
@@ -52,11 +53,11 @@ public class InputTest {
         String wrongNumber = "1l230O0Oo"; //O는 알파벳 0은 숫자
 
         //when
-        input.inputPurchasePrice();
+        systemInputString(wrongNumber);
 
         //then
-        IllegalArgumentException exception =  assertThrows(IllegalArgumentException.class, () -> systemInputString(wrongNumber));
-        assertThat(exception.getMessage()).isEqualTo("[ERROR] 숫자만 입력해주세요");
+        IllegalArgumentException exception =  assertThrows(IllegalArgumentException.class, () -> input.inputPurchasePrice());
+        assertThat(exception.getMessage()).isEqualTo("[ERROR] 정수형만 입력해주세요");
     }
 
     public static void systemInputString(String s){
